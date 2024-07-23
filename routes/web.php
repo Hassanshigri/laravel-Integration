@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployController;
+use App\Http\Controllers\FoodController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,11 @@ Route::get('/', function () {
 });
 Route::get('parent', [EmployController::class, 'Parent'])->name('admin.child');
 Route::get('/create-food', [EmployController::class, 'CreateFood'])->name('create.food');
+Route::post('/store-food', [FoodController::class, 'Store'])->name('store.food');
+Route::get('/show-all-food', [FoodController::class, 'index'])->name('show.food');
+Route::get('edit/{id}', [FoodController::class, 'edit'])->name('edit.food');
+Route::post('/updated/{id}', [FoodController::class, 'update'])->name('update.food');
+Route::get('/delete/{id}',[FoodController::class,'destroy'])->name('food.delete');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
